@@ -1,7 +1,8 @@
 # Yahoo_Finance_Portfolio_Tracker
 It is a Automation and Scarping Python script for yahoo finance users.This script asks for user email and password to 
 his Yahoo accout and gives user the **REAL TIME STOCK INFORMATION**  in his portfolio.
-The script Login in the user account and and the scraps the data from his portfolio and displays him.
+The script Login in the user account and then scraps the data from his portfolio and Sign Out from id after displaying 
+information.
 
 #How to run?
 
