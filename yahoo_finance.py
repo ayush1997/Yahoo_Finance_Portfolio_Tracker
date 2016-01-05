@@ -73,25 +73,43 @@ def loginandfinance(email,password):
 		c = c+13
 
 
+	print "TYPE S OR s to SIGN OUT"
+	sigout = raw_input()
+	if sigout == "s" or sigout=="S":
+		signout = sou.find_all("a")
+		for i in signout:
+			if i.get_text()==" Sign Out":
+				url_signout = i.get("href")
 
+		sout = br.open(url_signout)
+	else:
+		print "WRONG INPUT"
+
+
+
+	
 
 
 
 
 while 1:
 	try:
+		print
+		print
 		print "WELCOME"
 		print "PLEASE, ENTER YOUR EMAIL ADDRESS,  eg abcd@xyz.com"
 		email = raw_input()
 		print "PLEASE, ENTER YOUR PASSWORD"
 		password = getpass.getpass()        #THE PASSWORD THE USER ENTERS IS NOT SHOWN IN THE TERMINAL AND IT IS STORED AS STRING
 		loginandfinance(email,password)
+
 		print "DO WANT TO LOGIN TO SOME OTHER ACCOUNT? y/n"
 		ans  =raw_input()
 		if ans == 'y' or ans == 'Y':
 			pass
 		else:
 			break
+
 	except :
 		print "WRONG EMAIL OR PASSWORD"
 		print 
