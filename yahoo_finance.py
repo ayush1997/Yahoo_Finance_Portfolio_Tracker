@@ -1,14 +1,14 @@
 import mechanize    #FOR AUTOMATING THE BROWSER
 import cookielib	#FOR HANDLING THE COOKIES
 from bs4 import BeautifulSoup     #FOR PARSING THE DATA WE GET FROM THE WEBSITE
-import getpass
+import getpass		#FOR PASSWORD SECUIRTY
 
 def loginandfinance(email,password):
 	url_main = "https://login.yahoo.com/"
-	br = mechanize.Browser()   #instance
+	br = mechanize.Browser()   #instance created
 
 	#cookiejar
-	cj = cookielib.LWPCookieJar()
+	cj = cookielib.LWPCookieJar()  #handles the session cookies
 	br.set_cookiejar(cj)
 
 	#browser options	
@@ -40,7 +40,7 @@ def loginandfinance(email,password):
 	url_finanace='https://in.finance.yahoo.com/'
 
 	br.find_link(url = url_finanace)
-	req = br.follow_link(url=url_finanace)
+	req = br.follow_link(url=url_finanace)  
 
 	url_port = "https://in.finance.yahoo.com/portfolio/p_0/view/v1"
 	reqs = br.open(url_port)
@@ -52,14 +52,14 @@ def loginandfinance(email,password):
 
 	sou=BeautifulSoup(con)
 	for script in sou(["script","style","input"]):
-		script.extract()
+		script.extract()								#removes all the "script","style" and "input" tags data as they are useless, helps while scraping manually.
 
 	sp = sou.find_all("span",{"class":"wrapper"})
 	for i in sp:
 		ls.append(i.get_text())
 	del ls[0:8]
 
-
+	#spaces are given the text for prper alognment of text in terminal.
 	lsdet = ["SYMBOL    ","TIME/DATE ","PRICE     ","CHG      ","CHG%     ","DAY'S LOW ","DAY'S HIGH","VOLUME    ","AVG VOLUME","MKT CAP   "]
 
 	c=0
